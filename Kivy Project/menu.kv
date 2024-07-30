@@ -1,0 +1,864 @@
+Janela_Gestora:
+    Janela_Principal:
+    Tela_Login:
+    Tela_Criar_Conta:
+    Tela_Escolha:
+    Tela_Servicos:
+    Tela_Despesas:
+
+<Janela_Principal>:
+    name: "Janela_Principal"
+
+    FloatLayout:
+
+        Image:
+            source: "SAVE LOGOTIPO.png"
+            allow_stretch: True
+            size_hint: 0.5, 0.5
+            pos_hint: {'center_x': 0.5,'center_y': 0.7}
+
+        Button:
+            text:'Login'
+            pos_hint: {'center_x': 0.5,'center_y': 0.4}
+            size_hint: 0.2,0.1
+            on_press:
+                app.root.current = "Tela_Login"
+    
+        Button:
+            text:'Criar Conta'
+            pos_hint: {'center_x': 0.5,'center_y': 0.25}
+            size_hint: 0.2,0.1
+            on_press:
+                app.root.current = "Tela_Criar_Conta"
+
+        Button:
+            text:'Sair'
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+            size_hint: 0.2,0.1
+            on_press: app.sair()
+
+
+#---------------------------------------------------------------------- TELA LOGIN ----------------------------------------------------------------------
+
+<Tela_Login>:
+    name: "Tela_Login"
+
+    FloatLayout:
+
+        Label:
+            text: 'Nome ou E-mail:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Label:
+            text: 'Palavra Passe:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.6}
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.37}         
+
+        TextInput:
+            id: nome_mail
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.7}
+            size_hint: 0.2, 0.1
+
+        TextInput:
+            id: palavra_chave
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint: 0.2, 0.1 
+            password: True   
+              
+        Button:
+            text:'Entrar'
+            pos_hint: {'center_x': 0.5,'center_y': 0.25}
+            size_hint: 0.1,0.1
+            on_press: root.login() 
+
+        Button:
+            text:'Voltar'
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+            size_hint: 0.1,0.1
+            on_press:
+                app.root.current = "Janela_Principal"   
+
+
+#---------------------------------------------------------------------- TELA CRIAR CONTA ----------------------------------------------------------------------
+
+<Tela_Criar_Conta>:
+    name: "Tela_Criar_Conta"
+
+    FloatLayout:
+
+        Label:
+            text: 'Nome:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.9}
+
+        Label:
+            text: 'E-mail:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.7}    
+
+        Label:
+            text: 'Palavra passe:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}  
+
+        Label:
+            text: 'Confirmar Palavra passe:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.3}
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}          
+
+        TextInput:
+            id: nome
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+            size_hint: 0.2, 0.1
+
+        TextInput:
+            id: mail
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.6}
+            size_hint: 0.2, 0.1    
+
+        TextInput:
+            id: palavra_chave
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.4}
+            size_hint: 0.2, 0.1
+            password: True  
+
+        TextInput:
+            id: confirmar_palavra_chave
+            text:''  
+            pos_hint: {'center_x': 0.5,'center_y': 0.2}
+            size_hint: 0.2, 0.1
+            password: True      
+
+        Button:
+            text:'Criar Conta'
+            pos_hint: {'center_x': 0.9,'center_y': 0.1}
+            size_hint: 0.1,0.1
+            on_press: root.criar_conta()
+
+        Button:
+            text:'Voltar'
+            pos_hint: {'center_x': 0.1,'center_y': 0.1}
+            size_hint: 0.1,0.1
+            on_press:
+                app.root.current = "Janela_Principal"
+
+
+#---------------------------------------------------------------------- TELA ESCOLHA ----------------------------------------------------------------------
+
+<Tela_Escolha>
+    name: "Tela_Escolha"
+
+    FloatLayout:
+
+        Image:
+            source: "SAVE LOGOTIPO.png"
+            allow_stretch: True
+            size_hint: 0.5, 0.5
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Label:
+            text: 'Escolha o que pretende gerir:'
+            color: ( "#000000" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.58} 
+
+        Button:
+            text:'Serviços/Subscrições'
+            pos_hint: {'center_x': 0.5,'center_y': 0.45}
+            size_hint: 0.23,0.1
+            on_press:
+                app.root.current = "Tela_Servicos"
+
+        Button:
+            text:'Despesas Diárias'
+            pos_hint: {'center_x': 0.5,'center_y': 0.3}
+            size_hint: 0.23,0.1
+            on_press:
+                app.root.current = "Tela_Despesas" 
+
+        Button:
+            text:'Saír da Conta'
+            pos_hint: {'center_x': 0.12,'center_y': 0.1}
+            size_hint: 0.1,0.1
+            on_press:
+                app.root.current = "Tela_Login"           
+
+
+#---------------------------------------------------------------------- TELA SERVIÇOS (POPUP'S) ----------------------------------------------------------------------
+
+#:import Factory kivy.factory.Factory
+<MeuPopup@Popup>
+
+    id: meu_popup
+    auto_dismiss: False
+    size_hint: 0.6,0.9
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Adicionar Subscrição"
+
+    
+    FloatLayout:
+
+        Label:
+            text: "Nome da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.82}    
+
+        TextInput:
+            id: subscricao
+            text: ""
+            hint_text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.77}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Tipo da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.69}     
+
+        Spinner:
+            id: tipo_subscricao
+            text: ""
+            values: root.receber_tipo_subscricoes()
+            pos_hint: {'center_x': 0.5,'center_y': 0.64}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Valor"
+            pos_hint: {'center_x': 0.5,'center_y': 0.56}     
+
+        TextInput:
+            id: valor
+            text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.51}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Fidelização"
+            pos_hint: {'center_x': 0.5,'center_y': 0.43}       
+
+        Spinner:
+            id: fidelizacao
+            text: ""
+            values: ['Sim', 'Não']
+            pos_hint: {'center_x': 0.5,'center_y': 0.38}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Início da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.30}     
+
+        TextInput:
+            id: dt_inicio_subscricao
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.25}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Término da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.17}      
+
+        TextInput:
+            id: dt_termino_subscricao
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.12}
+            size_hint: 0.3, 0.05                    
+
+        Button:
+            text: "Adicionar Subscrição"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.inserir_dados_subscricoes()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()  
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#FFFFFF" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.05}        
+
+<MeuPopup_1@Popup>
+
+    id: meu_popup_1
+    auto_dismiss: False
+    size_hint: 0.4,0.4
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Remover Subscrição"
+
+    FloatLayout:
+
+        Label:
+            text: "Selecione a subscrição que quer remover:"
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Spinner:
+            id: spinner_subscricao
+            text: "Selecione uma subscrição"
+            values: root.receber_subscricoes()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint: 0.3, 0.1     
+
+        Label:
+            id: msg_erro_sub
+            text: ""
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+
+        Button:
+            text: "Remover Subscrição"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.remover_dados_subscricoes()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss() 
+
+<MeuPopup_2@Popup>
+
+    id: meu_popup_2
+    auto_dismiss: False
+    size_hint: 0.4,0.4
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Editar Subscrição"
+
+    FloatLayout:
+
+        Label:
+            text: "Selecione a subscrição que quer editar:"
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Spinner:
+            id: spinner_subscricao
+            text: "Selecione uma subscrição"
+            values: root.receber_subscricoes()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint: 0.3, 0.1     
+
+        Label:
+            id: msg_erro_sub
+            text: ""
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+
+        Button:
+            text: "Seguinte"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_press: root.verificar_sub() 
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()             
+
+
+<MeuPopup_2_5@Popup>
+
+    id: meu_popup_2_5
+    auto_dismiss: False
+    size_hint: 0.6,0.9
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Editar Subscrição"
+
+    
+    FloatLayout:
+
+        Label:
+            text: "Nome da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.82}    
+
+        TextInput:
+            id: subscricao
+            text: ""
+            hint_text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.77}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Tipo da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.69}     
+
+        Spinner:
+            id: tipo_subscricao
+            text: ""
+            values: ['Mensal', 'Anual']
+            pos_hint: {'center_x': 0.5,'center_y': 0.64}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Valor"
+            pos_hint: {'center_x': 0.5,'center_y': 0.56}     
+
+        TextInput:
+            id: valor
+            text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.51}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Fidelização"
+            pos_hint: {'center_x': 0.5,'center_y': 0.43}       
+
+        Spinner:
+            id: fidelizacao
+            text: ""
+            values: ['Sim', 'Não']
+            pos_hint: {'center_x': 0.5,'center_y': 0.38}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Início da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.30}     
+
+        TextInput:
+            id: dt_inicio_subscricao
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.25}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Término da Subscrição"
+            pos_hint: {'center_x': 0.5,'center_y': 0.17}      
+
+        TextInput:
+            id: dt_termino_subscricao
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.12}
+            size_hint: 0.3, 0.05                    
+
+        Button:
+            text: "Editar Subscrição"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.atualizar_subscricoes()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()  
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#FFFFFF" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.05}
+
+#---------------------------------------------------------------------- TELA SERVIÇOS ----------------------------------------------------------------------
+
+<Tela_Servicos>
+    name: "Tela_Servicos"
+
+    BoxLayout:
+        id: subscricoes_layout
+        orientation: 'vertical'
+        spacing: 10
+        pos_hint: {'center_x': 0.5,'center_y': 0.4}
+        size_hint: 0.7, 0.3
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+            GridLayout:
+                id: tabela
+                cols: 6
+                size_hint_y: None
+                height: 1000
+                
+    FloatLayout:
+
+        Image:
+            source: "serviços e subscrições.png"
+            allow_stretch: True
+            size_hint: 0.7, 0.7
+            pos_hint: {'center_x': 0.5,'center_y': 0.9}
+                
+        Button:
+            text:'Voltar'
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+            size_hint: 0.23,0.1
+            on_press:
+                app.root.current = "Tela_Escolha"  
+
+        Button:
+            text: "Adicionar Subscrição"
+            pos_hint: {'center_x': 0.15,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup().open()
+
+        Button:
+            text: "Ver Subscrições" 
+            pos_hint: {'center_x': 0.37,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_release: root.consultar_e_exibir_subscricoes()
+
+        Button:
+            text: "Remover Subscrição"
+            pos_hint: {'center_x': 0.61,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup_1().open()
+
+        Button:
+            text: "Editar Subscrição"
+            pos_hint: {'center_x': 0.85,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup_2().open()   
+
+        Label:
+            id: subscricoes_label
+            text:'' 
+            pos_hint: {'center_x': 0.5,'center_y': 0.5} 
+            color: ( "#000000" )    
+
+
+#---------------------------------------------------------------------- TELA DESPESAS (POPUP'S) ----------------------------------------------------------------------
+
+<MeuPopup_Despesas@Popup>
+
+    id: meu_popup_despesas
+    auto_dismiss: False
+    size_hint: 0.6,0.9
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Adicionar Despesas"
+
+    
+    FloatLayout:
+
+        Label:
+            text: "Nome da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.82}    
+
+        TextInput:
+            id: despesa
+            text: ""
+            hint_text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.77}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Tipo da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.69}     
+
+        Spinner:
+            id: tipo_despesa
+            text: ""
+            values: root.receber_tipo_despesas()
+            pos_hint: {'center_x': 0.5,'center_y': 0.64}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Valor"
+            pos_hint: {'center_x': 0.5,'center_y': 0.56}     
+
+        TextInput:
+            id: valor
+            text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.51}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Início da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.42}     
+
+        TextInput:
+            id: dt_inicio_despesa
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.37}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Limite da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.29}      
+
+        TextInput:
+            id: dt_limite_despesa
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.24}
+            size_hint: 0.3, 0.05                    
+
+        Button:
+            text: "Adicionar Despesa"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.inserir_dados_despesas()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()  
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#FFFFFF" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.05}
+
+
+<MeuPopup_1_Despesas@Popup>
+
+    id: meu_popup_1_despesas
+    auto_dismiss: False
+    size_hint: 0.4,0.4
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Remover Despesa"
+
+    FloatLayout:
+
+        Label:
+            text: "Selecione a despesa que quer remover:"
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Spinner:
+            id: spinner_despesa
+            text: "Selecione uma despesa"
+            values: root.receber_despesas()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint: 0.3, 0.1     
+
+        Label:
+            id: msg_erro_sub
+            text: ""
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+
+        Button:
+            text: "Remover Despesa"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.remover_dados_despesas()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()
+
+<MeuPopup_2_Despesas@Popup>
+
+    id: meu_popup_2_despesas
+    auto_dismiss: False
+    size_hint: 0.4,0.4
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Editar Despesa"
+
+    FloatLayout:
+
+        Label:
+            text: "Selecione a despesa que quer editar:"
+            pos_hint: {'center_x': 0.5,'center_y': 0.8}
+
+        Spinner:
+            id: spinner_despesa
+            text: "Selecione uma despesa"
+            values: root.receber_despesas()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            size_hint: 0.3, 0.1     
+
+        Label:
+            id: msg_erro_despesa
+            text: ""
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+
+        Button:
+            text: "Seguinte"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_press: root.verificar_despesa() 
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()             
+
+
+<MeuPopup_2_5_Despesas@Popup>
+
+    id: meu_popup_2_5_despesas
+    auto_dismiss: False
+    size_hint: 0.6,0.9
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+    title: "Editar Despesa"
+
+    
+    FloatLayout:
+
+        Label:
+            text: "Nome da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.82}    
+
+        TextInput:
+            id: despesa
+            text: ""
+            hint_text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.77}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Tipo da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.69}     
+
+        Spinner:
+            id: tipo_despesa
+            text: ""
+            values: ['Mensal', 'Anual']
+            pos_hint: {'center_x': 0.5,'center_y': 0.64}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Valor"
+            pos_hint: {'center_x': 0.5,'center_y': 0.56}     
+
+        TextInput:
+            id: valor
+            text: ''
+            pos_hint: {'center_x': 0.5,'center_y': 0.51}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Início da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.42}     
+
+        TextInput:
+            id: dt_inicio_despesa
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.37}
+            size_hint: 0.3, 0.05
+
+        Label:
+            text: "Data de Término da Despesa"
+            pos_hint: {'center_x': 0.5,'center_y': 0.29}      
+
+        TextInput:
+            id: dt_limite_despesa
+            text: ""
+            hint_text: 'AAAA-MM-DD'
+            pos_hint: {'center_x': 0.5,'center_y': 0.24}
+            size_hint: 0.3, 0.05                    
+
+        Button:
+            text: "Editar Subscrição"
+            pos_hint: {'center_x': 0.85,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.atualizar_despesas()
+
+        Button:
+            text: "Cancelar"
+            pos_hint: {'center_x': 0.15,'center_y': 0.1}  
+            size_hint: 0.2, 0.1
+            on_release: root.dismiss()  
+
+        Label:
+            id: msg_erro
+            text: ''
+            color: ( "#FFFFFF" )
+            pos_hint: {'center_x': 0.5,'center_y': 0.05}            
+
+
+#---------------------------------------------------------------------- TELA DESPESAS ----------------------------------------------------------------------
+
+<Tela_Despesas>
+    name: "Tela_Despesas"
+
+    BoxLayout:
+        id: despesa_layout
+        orientation: 'vertical'
+        spacing: 10
+        pos_hint: {'center_x': 0.5,'center_y': 0.4}
+        size_hint: 0.7, 0.3
+
+        ScrollView:
+            do_scroll_y: True
+            do_scroll_x: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+            GridLayout:
+                id: tabela
+                cols: 5
+                size_hint_y: None
+                height: 1000
+
+    FloatLayout:
+
+        Image:
+            source: "despesas diarias.png"
+            allow_stretch: True
+            size_hint: 0.7, 0.7
+            pos_hint: {'center_x': 0.5,'center_y': 0.9} 
+
+        Button:
+            text: "Adicionar Despesa"
+            pos_hint: {'center_x': 0.15,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup_Despesas().open()
+
+        Button:
+            text: "Ver Despesas" 
+            pos_hint: {'center_x': 0.37,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_release: root.consultar_e_exibir_despesas()
+
+        Button:
+            text: "Remover Despesa"
+            pos_hint: {'center_x': 0.61,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup_1_Despesas().open()
+
+        Button:
+            text: "Editar Despesa"
+            pos_hint: {'center_x': 0.85,'center_y': 0.7}
+            size_hint: 0.15,0.1
+            on_press: Factory.MeuPopup_2_Despesas().open()   
+
+        Label:
+            id: despesa_label
+            text:'' 
+            pos_hint: {'center_x': 0.5,'center_y': 0.5} 
+            color: ( "#000000" )
+
+        Button:
+            text:'Voltar'
+            pos_hint: {'center_x': 0.5,'center_y': 0.1}
+            size_hint: 0.23,0.1
+            on_press:
+                app.root.current = "Tela_Escolha"
